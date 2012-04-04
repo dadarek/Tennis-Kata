@@ -26,9 +26,6 @@ describe Tennis do
 
   it "has winner after 4 points" do
     assert_points_create_winner 4, 0, :p1
-  end
-
-  it "has other winner after 4 points" do
     assert_points_create_winner 0, 4, :p2
   end
 
