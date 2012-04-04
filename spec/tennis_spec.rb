@@ -17,6 +17,11 @@ describe Tennis do
     assert_points_create_score 5, 6, [40, 45]
   end
 
+  it "has no winner initially" do
+    game = Tennis.new
+    game.winner.should == nil
+  end
+
   def assert_points_create_score p1, p2, expected_score
     game = Tennis.new
     p1.times { game.point :p1 }

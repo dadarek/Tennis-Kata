@@ -17,6 +17,10 @@ class Tennis
     @points << player
   end
 
+  def winner
+    nil
+  end
+
   private 
 
   def has_advantage player
