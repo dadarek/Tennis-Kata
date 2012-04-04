@@ -6,21 +6,11 @@ class Tennis
   end
 
   def score
-    result = [score_of(:p1), score_of(:p2)]
-    result = [45, 40] if has_advantage :p1
-    result = [40, 45] if has_advantage :p2
-    result = [40, 40] if is_deuce
-    result
+    [score_of(:p1), score_of(:p2)]
   end
 
   def point player
     @points << player
-  end
-
-  def winner
-    return nil if @points.count(:p1) == @points.count(:p2)
-    return :p1 if @points.count(:p1) > 3
-    return :p2 if @points.count(:p2) > 3
   end
 
   private 
@@ -32,24 +22,22 @@ class Tennis
     player_points > opponent_points and player_points > 3
   end
 
-  def is_deuce
-    p1 = @points.count :p1
-    p2 = @points.count :p2
-    p1 == p2 and p1 > 3
+  def won player
+    player_points = @points.count player
+    opponent_points = @points.count - player_points
+
+    player_points > opponent_points+1 and player_points > 3
   end
 
   def score_of player
-    result = 0
-
     points = @points.count player
-    points.times { |i|
-      value = 15
-      value = 10 if i == 2
-      value = 5 if i > 2
 
-      result += value
-    }
-
+    result = 40 
+    result = 0 if points == 0
+    result = 15 if points == 1
+    result = 30 if points == 2
+    result = 45 if has_advantage player
+    result = 50 if won player
     result 
   end
 
