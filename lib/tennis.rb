@@ -18,7 +18,8 @@ class Tennis
   end
 
   def winner
-    :p1 if @points.count(:p1) > 3
+    return :p1 if @points.count(:p1) > 3
+    return :p2 if @points.count(:p2) > 3
   end
 
   private 
