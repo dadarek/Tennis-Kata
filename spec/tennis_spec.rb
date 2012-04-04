@@ -20,6 +20,11 @@ describe Tennis do
     @game.score.should == [30, 30]
   end
 
+  it "treats third point as 40" do
+    points 3, 3
+    @game.score.should == [40, 40]
+  end
+
   def points p1, p2
     p1.times { @game.point :p1 }
     p2.times { @game.point :p2 }

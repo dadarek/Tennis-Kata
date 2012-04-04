@@ -10,7 +10,11 @@ class Tennis
   end
 
   def point player
-    @score[player] += 15
+    if @score[player] == 30
+      @score[player] += 10 
+    else
+      @score[player] += 15 
+    end
   end
 
 end
