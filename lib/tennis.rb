@@ -6,7 +6,7 @@ class Tennis
   end
 
   def score
-    [p1_score, p2_score]
+    [score_of(:p1), score_of(:p2)]
   end
 
   def point player
@@ -28,12 +28,8 @@ class Tennis
     @index[:p2] - @index[:p1] > 1
   end
 
-  def p1_score
-    @scores[@index[:p1]]
-  end
-
-  def p2_score
-    @scores[@index[:p2]]
+  def score_of player
+    @scores[@index[player]]
   end
 
 end
