@@ -18,35 +18,29 @@ describe Tennis do
   end
 
   it "has no winner up to 3 points" do
-    assert_no_winner_after 0
-    assert_no_winner_after 1
-    assert_no_winner_after 2
-    assert_no_winner_after 3
+    assert_points_create_winner 0, 0, nil
+    assert_points_create_winner 1, 0, nil
+    assert_points_create_winner 0, 2, nil
+    assert_points_create_winner 3, 0, nil
   end
 
   it "has winner after 4 points" do
-    game = Tennis.new
-    4.times { game.point :p1 }
-    game.winner.should == :p1
+    assert_points_create_winner 4, 0, :p1
   end
 
   it "has other winner after 4 points" do
-    game = Tennis.new
-    4.times { game.point :p2 }
-    game.winner.should == :p2
+    assert_points_create_winner 0, 4, :p2
   end
 
   it "has no winner on deuce" do
-    game = Tennis.new
-    4.times { game.point :p1 }
-    4.times { game.point :p2 }
-    game.winner.should == nil
+    assert_points_create_winner 4, 4, nil
   end
 
-  def assert_no_winner_after n
+  def assert_points_create_winner p1, p2, expected_winner
     game = Tennis.new
-    n.times { game.point :p1 }
-    game.winner.should == nil
+    p1.times { game.point :p1 }
+    p2.times { game.point :p2 }
+    game.winner.should == expected_winner
   end
 
   def assert_points_create_score p1, p2, expected_score
