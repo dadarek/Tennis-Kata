@@ -30,6 +30,12 @@ describe Tennis do
     game.winner.should == :p1
   end
 
+  it "has other winner after 4 points" do
+    game = Tennis.new
+    4.times { game.point :p2 }
+    game.winner.should == :p2
+  end
+
   def assert_no_winner_after n
     game = Tennis.new
     n.times { game.point :p1 }
