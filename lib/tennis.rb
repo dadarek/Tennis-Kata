@@ -19,6 +19,12 @@ class Tennis
     result
   end
 
+  def point player
+    @points << player
+  end
+
+  private 
+
   def points n
     result = 0
 
@@ -31,10 +37,6 @@ class Tennis
     }
 
     result 
-  end
-
-  def point player
-    @points << player
   end
 
 end
