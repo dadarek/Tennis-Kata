@@ -38,9 +38,7 @@ class Tennis
     points = @points[p]
 
     result = 40 
-    result = 0 if points == 0
-    result = 15 if points == 1
-    result = 30 if points == 2
+    result = points * 15 if points < 3
     result = 45 if has_advantage p
     result = 50 if won p
     result 
