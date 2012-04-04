@@ -1,11 +1,16 @@
 
 class Tennis
 
-  def score
-    [0, 0]
+  def initialize
+    @score = [0, 0]
   end
 
-  def winner
+  def score
+    @score 
+  end
+
+  def point player
+    @score = [15, 15]
   end
 
 end
