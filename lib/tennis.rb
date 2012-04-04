@@ -1,10 +1,6 @@
 
 class Tennis
-  def p1_score 
-    0
-  end
-
-  def p2_score
+  def score( player )
     0
   end
 end
