@@ -45,13 +45,18 @@ describe Tennis do
   end
 
   it "declares no winner if p1 has 3 points" do
-    point_n_times 4, 3
+    point_n_times 3, 4
     @game.winner.should == nil
   end
 
   it "declares no winner if p2 has 3 points" do
-    point_n_times 3, 4
+    point_n_times 4, 3
     @game.winner.should == nil
+  end
+
+  it "declares p1 winner if p2 has 3 points but p1 has 5" do
+    point_n_times 5, 3
+    @game.winner.should == :p1
   end
 
   def point_n_times p1, p2

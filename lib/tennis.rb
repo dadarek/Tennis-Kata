@@ -17,6 +17,7 @@ class Tennis
 
   def winner
     return :p1 if @p1ScoreIndex == 4 and @p2ScoreIndex < 3
+    return :p1 if @p1ScoreIndex == 5 and @p2ScoreIndex < 4
     return :p2 if @p2ScoreIndex == 4 and @p1ScoreIndex < 3
   end
 
