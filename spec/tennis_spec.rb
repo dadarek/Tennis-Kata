@@ -18,10 +18,11 @@ describe Tennis do
   end
 
   it "has no winner up to 3 points" do
-    assert_points_create_winner 0, 0, nil
-    assert_points_create_winner 1, 0, nil
-    assert_points_create_winner 0, 2, nil
-    assert_points_create_winner 3, 0, nil
+    4.times { |p1|
+      4.times { |p2|
+        assert_points_create_winner p1, p2, nil
+      }
+    }
   end
 
   it "has winner after 4 points" do
