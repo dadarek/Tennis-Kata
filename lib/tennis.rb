@@ -6,13 +6,7 @@ class Tennis
   end
 
   def score
-    p1s = @points.count :p1
-    p2s = @points.count :p2
-
-    p1 = points p1s
-    p2 = points p2s
-
-    result = [p1, p2]
+    result = [score_of(:p1), score_of(:p2)]
     result = [45, 40] if has_advantage :p1
     result = [40, 45] if has_advantage :p2
     result = [40, 40] if is_deuce
@@ -38,10 +32,11 @@ class Tennis
     p1 == p2 and p1 > 3
   end
 
-  def points n
+  def score_of player
     result = 0
 
-    n.times { |i|
+    points = @points.count player
+    points.times { |i|
       value = 15
       value = 10 if i == 2
       value = 5 if i > 2
