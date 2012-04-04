@@ -15,6 +15,10 @@ class Tennis
     value = 5 if @score[player] == 40
 
     @score[player] += value
+
+    if score == [45, 45]
+      @score = { :p1 => 40, :p2 => 40 }
+    end
   end
 
 end
