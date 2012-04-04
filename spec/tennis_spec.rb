@@ -2,10 +2,6 @@ require 'tennis'
 
 describe Tennis do
 
-  before :each do
-    @game = Tennis.new
-  end
-
   it "starts with 0 score" do
     assert_points_create_score 0, 0, [0, 0]
   end
