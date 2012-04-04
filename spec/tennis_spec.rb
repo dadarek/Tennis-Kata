@@ -10,21 +10,22 @@ describe Tennis do
   end
 
   it "keeps track of first point" do
-    @game.point :p1
+    score_n_times 1
     assert_score 15
   end
 
   it "keeps track of second point" do
-    @game.point :p1
-    @game.point :p1
+    score_n_times 2
     assert_score 30
   end
 
   it "keeps track of third point" do
-    @game.point :p1
-    @game.point :p1
-    @game.point :p1
+    score_n_times 3
     assert_score 40
+  end
+
+  def score_n_times n
+    n.times { @game.point :p1 }
   end
 
   def assert_score expected
