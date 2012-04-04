@@ -15,7 +15,7 @@ describe Tennis do
     @game.score(:p1).should == 15
   end
 
-  it "remembers both players" do
+  it "keeps scores separate" do
     @game.point :p1
     @game.score(:p2).should == 0
   end
