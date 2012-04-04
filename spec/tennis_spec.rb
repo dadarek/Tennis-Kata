@@ -6,16 +6,20 @@ describe Tennis do
   end
 
   it "starts with 0 points" do
-    @game.score.should == [0, 0]
+    assert_score [0, 0]
   end
 
   it "remembers p1 score" do
     @game.point :p1
-    @game.score.should == [15, 0]
+    assert_score [15, 0]
   end
 
   it "remembers p2 score" do
     @game.point :p2
-    @game.score.should == [0, 15]
+    assert_score [0, 15]
+  end
+
+  def assert_score expected
+    @game.score.should == expected
   end
 end
