@@ -24,11 +24,6 @@ describe Tennis do
     assert_score 40
   end
 
-  it "declares winner after fourth point" do
-    4.times { @game.point :p1 }
-    @game.winner.should == :p1
-  end
-
   def assert_score expected
     @game.score.should == expected
   end
