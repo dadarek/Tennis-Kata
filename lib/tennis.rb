@@ -15,6 +15,10 @@ class Tennis
     @p2ScoreIndex += 1 if player == :p2
   end
 
+  def winner
+    :p1
+  end
+
   private
 
   def p1_score
