@@ -46,9 +46,15 @@ describe Tennis do
     @game.winner.should == :p2
   end
 
-  it "declares no winner if opponent has 3 points" do
+  it "declares no winner if p1 has 3 points" do
     3.times { @game.point :p1 }
     4.times { @game.point :p2 }
+    @game.winner.should == nil
+  end
+
+  it "declares no winner if p2 has 3 points" do
+    4.times { @game.point :p1 }
+    3.times { @game.point :p2 }
     @game.winner.should == nil
   end
 
