@@ -11,6 +11,7 @@ describe Tennis do
     assert_points_create_score 2, 2, [30, 30]
     assert_points_create_score 3, 3, [40, 40]
     assert_points_create_score 4, 3, [45, 40]
+    assert_points_create_score 4, 4, [40, 40]
   end
 
   def assert_points_create_score p1, p2, expected_score
