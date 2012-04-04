@@ -15,7 +15,7 @@ class Tennis
     result = [p1, p2]
     result = [45, 40] if has_advantage :p1
     result = [40, 45] if has_advantage :p2
-    result = [40, 40] if (p1 == p2 and p1 > 40)
+    result = [40, 40] if is_deuce
     result
   end
 
@@ -30,6 +30,12 @@ class Tennis
     opponent_points = @points.count - player_points
 
     player_points > opponent_points and player_points > 3
+  end
+
+  def is_deuce
+    p1 = @points.count :p1
+    p2 = @points.count :p2
+    p1 == p2 and p1 > 3
   end
 
   def points n
