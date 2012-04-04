@@ -22,6 +22,24 @@ describe Tennis do
     game.winner.should == nil
   end
 
+  it "has no winner after 1 point" do
+    game = Tennis.new
+    game.point :p1
+    game.winner.should == nil
+  end
+
+  it "has no winner after 2 point" do
+    game = Tennis.new
+    2.times { game.point :p1 }
+    game.winner.should == nil
+  end
+
+  it "has no winner after 3 point" do
+    game = Tennis.new
+    3.times { game.point :p1 }
+    game.winner.should == nil
+  end
+
   def assert_points_create_score p1, p2, expected_score
     game = Tennis.new
     p1.times { game.point :p1 }
