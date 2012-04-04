@@ -15,6 +15,7 @@ class Tennis
     result = [p1, p2]
     result = [40, 40] if (p1 == p2 and p1 > 40)
     result = [45, 40] if (p1 == p2 + 5 and p1 > 40)
+    result = [40, 45] if (p2 == p1 + 5 and p2 > 40)
     result
   end
 
