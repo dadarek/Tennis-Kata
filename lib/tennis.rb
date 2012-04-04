@@ -6,11 +6,17 @@ class Tennis
   end
 
   def score
-    [@scores[@scoreIndex], 0]
+    [p1_score, 0]
   end
 
   def point player
     @scoreIndex += 1
+  end
+
+  private
+
+  def p1_score
+    @scores[@scoreIndex]
   end
 
 end
