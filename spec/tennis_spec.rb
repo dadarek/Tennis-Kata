@@ -30,9 +30,7 @@ describe Tennis do
   end
 
   it "keeps track of both player points" do
-    @game.point :p1
-    @game.point :p2
-    @game.point :p2
+    point_n_times 1, 2
     assert_score [15, 30]
   end
 
@@ -47,15 +45,18 @@ describe Tennis do
   end
 
   it "declares no winner if p1 has 3 points" do
-    3.times { @game.point :p1 }
-    4.times { @game.point :p2 }
+    point_n_times 4, 3
     @game.winner.should == nil
   end
 
   it "declares no winner if p2 has 3 points" do
-    4.times { @game.point :p1 }
-    3.times { @game.point :p2 }
+    point_n_times 3, 4
     @game.winner.should == nil
+  end
+
+  def point_n_times p1, p2
+    p1.times { @game.point :p1 }
+    p2.times { @game.point :p2 }
   end
 
   def assert_score expected
