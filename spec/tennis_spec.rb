@@ -41,6 +41,17 @@ describe Tennis do
     @game.winner.should == :p1
   end
 
+  it "declares p2 as winner after 4 points" do
+    4.times { @game.point :p2 }
+    @game.winner.should == :p2
+  end
+
+  it "declares no winner if opponent has 3 points" do
+    3.times { @game.point :p1 }
+    4.times { @game.point :p2 }
+    @game.winner.should == nil
+  end
+
   def assert_score expected
     @game.score.should == expected
   end
