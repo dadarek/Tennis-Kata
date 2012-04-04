@@ -1,22 +1,28 @@
 
 class Tennis
   def initialize
-    @scoreIndex = 0
+    @p1ScoreIndex = 0
+    @p2ScoreIndex = 0
     @scores = [0, 15, 30, 40]
   end
 
   def score
-    [p1_score, 0]
+    [p1_score, p2_score]
   end
 
   def point player
-    @scoreIndex += 1
+    @p1ScoreIndex += 1 if player == :p1
+    @p2ScoreIndex += 1 if player == :p2
   end
 
   private
 
   def p1_score
-    @scores[@scoreIndex]
+    @scores[@p1ScoreIndex]
+  end
+
+  def p2_score
+    @scores[@p2ScoreIndex]
   end
 
 end
