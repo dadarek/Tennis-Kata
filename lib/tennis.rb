@@ -17,13 +17,17 @@ class Tennis
 
   def winner
     return :p1 if @p1ScoreIndex >= 4 and p1_is_ahead_2
-    return :p2 if @p2ScoreIndex == 4 and @p1ScoreIndex < 3
+    return :p2 if @p2ScoreIndex >= 4 and p2_is_ahead_2
   end
 
   private
 
   def p1_is_ahead_2
     @p1ScoreIndex - @p2ScoreIndex > 1
+  end
+
+  def p2_is_ahead_2
+    @p2ScoreIndex - @p1ScoreIndex > 1
   end
 
   def p1_score

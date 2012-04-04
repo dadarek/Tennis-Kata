@@ -64,6 +64,11 @@ describe Tennis do
     @game.winner.should == :p1
   end
 
+  it "declares p2 winner if p1 has 4 points but p2 has 6" do
+    point_n_times 4, 6
+    @game.winner.should == :p2
+  end
+
   def point_n_times p1, p2
     p1.times { @game.point :p1 }
     p2.times { @game.point :p2 }
