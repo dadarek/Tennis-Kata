@@ -1,17 +1,18 @@
 require 'tennis'
 
 describe Tennis do
-  it "starts with 0 points" do
-    x = Tennis.new
-    x.score(:p1).should == 0
-    x.score(:p2).should == 0
+  before(:each) do
+    @game = Tennis.new
   end
 
-  it "adss up points" do
-    x = Tennis.new
-    x.point(:p1)
+  it "starts with 0 points" do
+    @game.score(:p1).should == 0
+    @game.score(:p2).should == 0
+  end
 
-    x.score(:p1).should == 15
+  it "adds up points" do
+    @game.point(:p1)
+    @game.score(:p1).should == 15
   end
 
 end
