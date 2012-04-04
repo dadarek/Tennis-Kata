@@ -20,6 +20,13 @@ describe Tennis do
     assert_score 30
   end
 
+  it "keeps track of third point" do
+    @game.point :p1
+    @game.point :p1
+    @game.point :p1
+    assert_score 40
+  end
+
   def assert_score expected
     @game.score.should == expected
   end
