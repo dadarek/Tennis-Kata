@@ -1,7 +1,7 @@
 
 class Tennis
   def initialize
-    @score = [0, 0]
+    @score = 0
   end
 
   def score
@@ -9,8 +9,7 @@ class Tennis
   end
 
   def point player
-    @score = [15, 0] if :p1 == player
-    @score = [0, 15] if :p2 == player
+    @score += 15
   end
 end
 

@@ -6,17 +6,18 @@ describe Tennis do
   end
 
   it "starts with 0 points" do
-    assert_score [0, 0]
+    assert_score 0
   end
 
-  it "remembers p1 score" do
+  it "keeps track of first point" do
     @game.point :p1
-    assert_score [15, 0]
+    assert_score 15
   end
 
-  it "remembers p2 score" do
-    @game.point :p2
-    assert_score [0, 15]
+  it "keeps track of second point" do
+    @game.point :p1
+    @game.point :p1
+    assert_score 30
   end
 
   def assert_score expected
