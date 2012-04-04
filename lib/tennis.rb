@@ -2,42 +2,47 @@
 class Tennis
 
   def initialize
-    @points = []
+    @points = { :p1 => 0, :p2 => 0 }
   end
 
   def score
     [score_of(:p1), score_of(:p2)]
   end
 
-  def point player
-    @points << player
+  def point p
+    @points[p] += 1
   end
 
   private 
 
-  def has_advantage player
-    player_points = @points.count player
-    opponent_points = @points.count - player_points
+  def has_advantage p
+    player_points = @points[p]
+    opponent_points = @points[ opponent_of p ]
 
     player_points > opponent_points and player_points > 3
   end
 
-  def won player
-    player_points = @points.count player
-    opponent_points = @points.count - player_points
+  def won p
+    player_points = @points[p]
+    opponent_points = @points[ opponent_of p ]
 
     player_points > opponent_points+1 and player_points > 3
   end
 
-  def score_of player
-    points = @points.count player
+  def opponent_of p
+    return :p1 if p == :p2
+    :p2
+  end
+
+  def score_of p
+    points = @points[p]
 
     result = 40 
     result = 0 if points == 0
     result = 15 if points == 1
     result = 30 if points == 2
-    result = 45 if has_advantage player
-    result = 50 if won player
+    result = 45 if has_advantage p
+    result = 50 if won p
     result 
   end
 
