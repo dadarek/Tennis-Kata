@@ -18,6 +18,7 @@ class Tennis
   end
 
   def winner
+    return nil if @points.count(:p1) == @points.count(:p2)
     return :p1 if @points.count(:p1) > 3
     return :p2 if @points.count(:p2) > 3
   end
