@@ -2,23 +2,14 @@ require 'tennis'
 
 describe Tennis do
 
-  it "starts with 0 score" do
+  it "keeps proper score" do
     assert_points_create_score 0, 0, [0, 0]
-  end
-
-  it "treats first point as 15" do
+    assert_points_create_score 1, 0, [15, 0]
+    assert_points_create_score 2, 0, [30, 0]
+    assert_points_create_score 3, 0, [40, 0]
     assert_points_create_score 1, 1, [15, 15]
-  end
-
-  it "treats second point as 30" do
     assert_points_create_score 2, 2, [30, 30]
-  end
-
-  it "treats third point as 40" do
     assert_points_create_score 3, 3, [40, 40]
-  end
-
-  it "treats fourth point as 45" do
     assert_points_create_score 4, 3, [45, 40]
   end
 
