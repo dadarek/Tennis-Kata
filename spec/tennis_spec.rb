@@ -6,9 +6,15 @@ describe Tennis do
     @game.score.should == [0, 0]
   end
 
-  it "remembers score" do
+  it "remembers p1 score" do
     @game = Tennis.new
     @game.point :p1
     @game.score.should == [15, 0]
+  end
+
+  it "remembers p2 score" do
+    @game = Tennis.new
+    @game.point :p2
+    @game.score.should == [0, 15]
   end
 end
