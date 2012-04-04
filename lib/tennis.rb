@@ -12,5 +12,9 @@ class Tennis
   def point player
     @scoreIndex += 1
   end
+
+  def winner
+    :p1
+  end
 end
 
