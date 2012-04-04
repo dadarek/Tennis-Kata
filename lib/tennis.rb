@@ -6,7 +6,7 @@ class Tennis
   end
 
   def score
-    @scores[@scoreIndex]
+    [@scores[@scoreIndex], 0]
   end
 
   def point player
