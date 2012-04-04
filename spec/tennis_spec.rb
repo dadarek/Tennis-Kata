@@ -11,8 +11,13 @@ describe Tennis do
   end
 
   it "adds up points" do
-    @game.point(:p1)
+    @game.point :p1
     @game.score(:p1).should == 15
+  end
+
+  it "remembers both players" do
+    @game.point :p1
+    @game.score(:p2).should == 0
   end
 
 end

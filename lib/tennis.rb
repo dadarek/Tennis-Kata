@@ -5,7 +5,8 @@ class Tennis
   end
 
   def score(player)
-    @score
+    return @score if player == :p1
+    0
   end
 
   def point(player)
