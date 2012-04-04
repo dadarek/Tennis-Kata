@@ -1,15 +1,14 @@
 
 class Tennis
   def initialize
-    @score = 0
+    @scores = { :p1 => 0, :p2 => 0 }
   end
 
   def score(player)
-    return @score if player == :p1
-    0
+    @scores[player]
   end
 
   def point(player)
-    @score = 15;
+    @scores[player] = 15
   end
 end

@@ -20,4 +20,9 @@ describe Tennis do
     @game.score(:p2).should == 0
   end
 
+  it "adds up p2 points" do
+    @game.point :p2
+    @game.score(:p2).should == 15
+  end
+
 end
