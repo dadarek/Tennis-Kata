@@ -1,6 +1,14 @@
 
 class Tennis
-  def score( player )
-    0
+  def initialize
+    @score = 0
+  end
+
+  def score(player)
+    @score
+  end
+
+  def point(player)
+    @score = 15;
   end
 end
