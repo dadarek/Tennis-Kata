@@ -26,4 +26,11 @@ describe Tennis do
     @game.score.should == [30, 0]
   end
 
+  it "adds 10 to p1's third point" do
+    @game.point :p1
+    @game.point :p1
+    @game.point :p1
+    @game.score.should == [40, 0]
+  end
+
 end
