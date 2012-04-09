@@ -15,6 +15,8 @@ class Tennis
     points_to_add = 5 if score == [45, 40] or score == [40, 45]
 
     @score[player] += points_to_add
+
+    @score = { p1: 40, p2: 40 } if score == [45, 45]
   end
 
 end

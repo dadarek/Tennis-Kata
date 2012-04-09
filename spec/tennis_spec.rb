@@ -52,6 +52,12 @@ describe Tennis do
     @game.score.should == [40, 50]
   end
 
+  it "goes back to deuce on lost advantage" do
+    create_advantage :p1
+    score_points :p2, 1
+    @game.score.should == [40, 40]
+  end
+
   def score_points player, points
     points.times { @game.point player }
   end
