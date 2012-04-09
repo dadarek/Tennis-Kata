@@ -36,22 +36,19 @@ describe Tennis do
   end
 
   it "adds 5 to fourth point if deuce" do
-    score_points :p1, 3
-    score_points :p2, 3
+    create_deuce
     score_points :p1, 1
     @game.score.should == [45, 40]
   end
 
   it "adds 5 to p1's fifth point if advantage" do
-    score_points :p1, 3
-    score_points :p2, 3
+    create_deuce
     score_points :p1, 2
     @game.score.should == [50, 40]
   end
 
   it "adds 5 to p2's fifth point if advantage" do
-    score_points :p2, 3
-    score_points :p1, 3
+    create_deuce
     score_points :p2, 2
     @game.score.should == [40, 50]
   end
@@ -59,5 +56,12 @@ describe Tennis do
   def score_points player, points
     points.times { @game.point player }
   end
+
+  def create_deuce
+    score_points :p1, 3
+    score_points :p2, 3
+  end
+
+
 
 end
