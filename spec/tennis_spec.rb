@@ -35,6 +35,13 @@ describe Tennis do
     @game.score.should == [50, 0]
   end
 
+  it "adds 5 to fourth point if deuce" do
+    score_points :p1, 3
+    score_points :p2, 3
+    score_points :p1, 1
+    @game.score.should == [45, 40]
+  end
+
   def score_points player, points
     points.times { @game.point player }
   end
