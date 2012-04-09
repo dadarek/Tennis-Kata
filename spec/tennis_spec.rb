@@ -2,6 +2,10 @@ require 'tennis'
 
 describe Tennis do
 
+  before :each do
+    @game = Tennis.new
+  end
+
   it "starts with no score" do
     game = Tennis.new
     game.score.should == [0, 0]
