@@ -9,8 +9,8 @@ class Tennis
   end
 
   def point player
-    @score = [15, 0] if player == :p1
-    @score = [0, 15] if player == :p2
+    @score[0] += 15 if player == :p1
+    @score[1] += 15 if player == :p2
   end
 
 end
