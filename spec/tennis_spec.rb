@@ -7,4 +7,10 @@ describe Tennis do
     game.score.should == [0, 0]
   end
 
+  it "adds 15 to first point" do
+    game = Tennis.new
+    game.point :p1
+    game.score.should == [15, 0]
+  end
+
 end
