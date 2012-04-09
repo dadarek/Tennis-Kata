@@ -58,11 +58,18 @@ describe Tennis do
     @game.score.should == [40, 40]
   end
 
-  it "goes to advantage after point on lost advantage" do
+  it "goes to advantage after 1 point on lost advantage" do
     create_advantage :p1
     score_points :p2, 1
     score_points :p1, 1
     @game.score.should == [45, 40]
+  end
+
+  it "goes to 50 after 2 points on lost advantage" do
+    create_advantage :p1
+    score_points :p2, 1
+    score_points :p1, 2
+    @game.score.should == [50, 40]
   end
 
   def score_points player, points
