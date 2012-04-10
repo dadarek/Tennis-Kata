@@ -5,20 +5,19 @@ class Tennis
     @score = { p1: 0, p2: 0 }
   end
 
-  def score 
+  def score
     @score.values
   end
 
   def point player
-    @score[player] += next_point_value player
-
+    @score[player] += next_point_value(player)
     set_deuce if score == [45, 45]
   end
 
   private
 
   def next_point_value player
-    result = 15 
+    result = 15
     result = 10 if @score[player] >= 30
     result = 5 if deuce? or advantage?
     result
@@ -28,12 +27,12 @@ class Tennis
     score == [40, 40]
   end
 
-  def set_deuce
-    @score = { p1: 40, p2: 40 } 
+  def advantage?
+    score.include? 45
   end
 
-  def advantage?
-    score.sort == [40, 45]
+  def set_deuce
+    @score = { p1: 40, p2: 40 }
   end
 
 end
