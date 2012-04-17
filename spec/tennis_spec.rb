@@ -6,7 +6,7 @@ describe Tennis do
     @game = Tennis.new
   end
 
-  it "starts off with 0-0" do
+  it "Starts with 0-0" do
     @game.score.should == [0, 0]
   end
 
@@ -35,31 +35,31 @@ describe Tennis do
     @game.score.should == [0, 50]
   end
 
-  it "counts advantage point as 45 on deuce" do
+  it "counts advantage ball as 45" do
     create_advantage :p1
     @game.score.should == [45, 40]
   end
 
-  it "counts winning point as 50 on advantage" do
+  it "counts ball after advantage as 50" do
     create_advantage :p1
     balls :p1, 1
     @game.score.should == [50, 40]
   end
 
-  it "resets to deuce on lost advantage" do
-    create_advantage :p2
-    balls :p1, 1
+  it "resets score to [40, 40] when player loses advanrage" do
+    create_advantage :p1
+    balls :p2, 1
     @game.score.should == [40, 40]
+  end
+
+  def balls player, count
+    count.times { @game.ball player }
   end
 
   def create_advantage player
     balls :p1, 3
     balls :p2, 3
     balls player, 1
-  end
-
-  def balls player, number_of_balls
-    number_of_balls.times{ @game.ball player }
   end
 
 end
