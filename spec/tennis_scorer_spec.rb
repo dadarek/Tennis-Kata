@@ -3,63 +3,63 @@ require 'tennis_scorer'
 describe TennisScorer do
 
   before :each do
-    @game = TennisScorer.new
+    @scorer = TennisScorer.new
   end
 
-  it "Starts with 0-0" do
-    @game.score.should == [0, 0]
+  it "starts with 0-0" do
+    @scorer.score.should == [0, 0]
   end
 
   it "counts first ball as 15" do
-    balls :p1, 1
-    @game.score.should == [15, 0]
+    balls_for :p1, 1
+    @scorer.score.should == [15, 0]
   end
 
   it "counts second ball as 30" do
-    balls :p1, 2
-    @game.score.should == [30, 0]
+    balls_for :p1, 2
+    @scorer.score.should == [30, 0]
   end
 
   it "counts third ball as 40" do
-    balls :p1, 3
-    @game.score.should == [40, 0]
+    balls_for :p1, 3
+    @scorer.score.should == [40, 0]
   end
 
   it "counts fourth ball as 50" do
-    balls :p1, 4
-    @game.score.should == [50, 0]
+    balls_for :p1, 4
+    @scorer.score.should == [50, 0]
   end
 
-  it "keeps track of both players" do
-    balls :p2, 4
-    @game.score.should == [0, 50]
+  it "keeps track of both players score" do
+    balls_for :p2, 4
+    @scorer.score.should == [0, 50]
   end
 
   it "counts advantage ball as 45" do
     create_advantage :p1
-    @game.score.should == [45, 40]
+    @scorer.score.should == [45, 40]
   end
 
-  it "counts ball after advantage as 50" do
+  it "counts next ball on advantage as 50" do
     create_advantage :p1
-    balls :p1, 1
-    @game.score.should == [50, 40]
+    balls_for :p1, 1
+    @scorer.score.should == [50, 40]
   end
 
-  it "resets score to [40, 40] when player loses advanrage" do
-    create_advantage :p1
-    balls :p2, 1
-    @game.score.should == [40, 40]
+  it "resets to 40-40 on lost advantage" do
+    create_advantage :p2
+    balls_for :p1, 1
+    @scorer.score.should == [40, 40]
   end
 
-  def balls player, count
-    count.times { @game.ball player }
+  def balls_for player, balls
+    balls.times{ @scorer.ball_for player }
   end
 
   def create_advantage player
-    balls :p1, 3
-    balls :p2, 3
-    balls player, 1
+    balls_for :p1, 3
+    balls_for :p2, 3
+    balls_for player, 1
   end
 
 end
