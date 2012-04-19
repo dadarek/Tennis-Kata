@@ -1,5 +1,5 @@
 
-class Tennis
+class TennisScorer
   
   def initialize
     @score = { p1: 0, p2: 0 }

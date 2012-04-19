@@ -1,9 +1,9 @@
-require 'tennis'
+require 'tennis_scorer'
 
-describe Tennis do
+describe TennisScorer do
 
   before :each do
-    @game = Tennis.new
+    @game = TennisScorer.new
   end
 
   it "Starts with 0-0" do
