@@ -30,7 +30,7 @@ describe TennisScorer do
     @scorer.score.should == [50, 0]
   end
 
-  it "keeps track of both players score" do
+  it "keeps track of 2 players" do
     balls_for :p2, 4
     @scorer.score.should == [0, 50]
   end
@@ -40,7 +40,7 @@ describe TennisScorer do
     @scorer.score.should == [45, 40]
   end
 
-  it "counts next ball on advantage as 50" do
+  it "counts game-point on advantage as 50" do
     create_advantage :p1
     balls_for :p1, 1
     @scorer.score.should == [50, 40]
@@ -52,8 +52,8 @@ describe TennisScorer do
     @scorer.score.should == [40, 40]
   end
 
-  def balls_for player, balls
-    balls.times{ @scorer.ball_for player }
+  def balls_for player, how_many
+    how_many.times{ @scorer.ball_for player }
   end
 
   def create_advantage player
