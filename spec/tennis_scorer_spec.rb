@@ -6,49 +6,49 @@ describe TennisScorer do
     @scorer = TennisScorer.new
   end
 
-  it "starts with 0-0" do
+  it "starts at 0-0" do
     @scorer.score.should == [0, 0]
   end
 
-  it "counts first ball as 15" do
+  it "treats first ball as 15" do
     balls_for :p1, 1
     @scorer.score.should == [15, 0]
   end
 
-  it "counts second ball as 30" do
+  it "treats the second ball as 30" do
     balls_for :p1, 2
     @scorer.score.should == [30, 0]
   end
 
-  it "counts third ball as 40" do
+  it "treats the third ball as 40" do
     balls_for :p1, 3
     @scorer.score.should == [40, 0]
   end
 
-  it "counts fourth ball as 50" do
+  it "treats the fourth ball as 50" do
     balls_for :p1, 4
     @scorer.score.should == [50, 0]
   end
 
-  it "keeps track of 2 players" do
+  it "keeps track of both players" do
     balls_for :p2, 4
     @scorer.score.should == [0, 50]
   end
 
-  it "counts advantage ball as 45" do
+  it "treats advantage as 45" do
     create_advantage :p1
     @scorer.score.should == [45, 40]
   end
 
-  it "counts game-point on advantage as 50" do
+  it "treats game-ball as 50" do
     create_advantage :p1
     balls_for :p1, 1
     @scorer.score.should == [50, 40]
   end
 
   it "resets to 40-40 on lost advantage" do
-    create_advantage :p2
-    balls_for :p1, 1
+    create_advantage :p1
+    balls_for :p2, 1
     @scorer.score.should == [40, 40]
   end
 
