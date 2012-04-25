@@ -6,26 +6,26 @@ describe TennisScorer do
     @scorer = TennisScorer.new
   end
 
-  it "starts off at 0-0" do
+  it "starts with 0-0" do
     @scorer.score.should == [0, 0]
   end
 
-  it "counts first balls as 15" do
+  it "counts first ball as 15" do
     balls_for :p1, 1
     @scorer.score.should == [15, 0]
   end
 
-  it "counts the second ball as 30" do
+  it "counts second ball as 30" do
     balls_for :p1, 2
     @scorer.score.should == [30, 0]
   end
 
-  it "counts the third ball as 40" do
+  it "counts third ball as 40" do
     balls_for :p1, 3
     @scorer.score.should == [40, 0]
   end
 
-  it "counts the fourth ball as 50" do
+  it "counts fourth ball as 50" do
     balls_for :p1, 4
     @scorer.score.should == [50, 0]
   end
@@ -35,23 +35,22 @@ describe TennisScorer do
     @scorer.score.should == [0, 50]
   end
 
-  it "treats advantage ball as 45" do
+  it "counts advantage ball as 45" do
     create_advantage :p1
     @scorer.score.should == [45, 40]
   end
 
-  it "treats game-point on advantage as 50" do
+  it "counts game ball as 50" do
     create_advantage :p1
     balls_for :p1, 1
     @scorer.score.should == [50, 40]
   end
-
-  it "resets to 40-40 after lost advnatage" do
-    create_advantage :p2
-    balls_for :p1, 1
+  
+  it "resets to deuce after lost advantage" do
+    create_advantage :p1
+    balls_for :p2, 1
     @scorer.score.should == [40, 40]
   end
-
 
   def balls_for player, how_many
     how_many.times{ @scorer.ball_for player }
