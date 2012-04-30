@@ -52,6 +52,11 @@ describe TennisScorer do
     @scorer.score.should == [40, 40]
   end
 
+  it "knows where there is a winner" do
+    balls_for :p1, 4
+    @scorer.winner.should == :p1
+  end
+
   def balls_for player, how_many
     how_many.times{ @scorer.ball_for player }
   end

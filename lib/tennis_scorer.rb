@@ -14,6 +14,10 @@ class TennisScorer
     set_deuce if lost_advantage? 
   end
 
+  def winner
+    :p1
+  end
+
   private
 
   def next_point_value player
