@@ -8,26 +8,31 @@ describe TennisScorer do
 
   it "starts with 0-0" do
     @scorer.score.should == [0, 0]
+    @scorer.winner.should be_nil
   end
 
   it "treats first ball as 15" do
     balls_for :p1, 1
     @scorer.score.should == [15, 0]
+    @scorer.winner.should be_nil
   end
 
   it "treats second ball as 30" do
     balls_for :p1, 2
     @scorer.score.should == [30, 0]
+    @scorer.winner.should be_nil
   end
 
   it "treats third ball as 40" do
     balls_for :p1, 3
     @scorer.score.should == [40, 0]
+    @scorer.winner.should be_nil
   end
 
   it "treats fourth ball as 50" do
     balls_for :p1, 4
     @scorer.score.should == [50, 0]
+    @scorer.winner.should be_nil
   end
 
   it "keeps track of both players" do
