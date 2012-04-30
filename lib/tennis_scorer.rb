@@ -15,7 +15,8 @@ class TennisScorer
   end
 
   def winner
-    @score[:p1] == 50 ? :p1 : :p2
+    return :p1 if @score[:p1] == 50
+    return :p2 if @score[:p2] == 50
   end
 
   private

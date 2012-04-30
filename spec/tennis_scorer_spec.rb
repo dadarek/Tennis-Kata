@@ -62,6 +62,10 @@ describe TennisScorer do
     @scorer.winner.should == :p2
   end
 
+  it "knows when there is no winner" do
+    @scorer.winner.should == nil
+  end
+
   def balls_for player, how_many
     how_many.times{ @scorer.ball_for player }
   end
