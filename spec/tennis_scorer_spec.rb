@@ -8,31 +8,26 @@ describe TennisScorer do
 
   it "starts with 0-0" do
     @scorer.score.should == [0, 0]
-    @scorer.winner.should be_nil
   end
 
   it "treats first ball as 15" do
     balls_for :p1, 1
     @scorer.score.should == [15, 0]
-    @scorer.winner.should be_nil
   end
 
   it "treats second ball as 30" do
     balls_for :p1, 2
     @scorer.score.should == [30, 0]
-    @scorer.winner.should be_nil
   end
 
   it "treats third ball as 40" do
     balls_for :p1, 3
     @scorer.score.should == [40, 0]
-    @scorer.winner.should be_nil
   end
 
   it "treats fourth ball as 50" do
     balls_for :p1, 4
     @scorer.score.should == [50, 0]
-    @scorer.winner.should be_nil
   end
 
   it "keeps track of both players" do
@@ -55,6 +50,18 @@ describe TennisScorer do
     create_advantage :p1
     balls_for :p2, 1
     @scorer.score.should == [40, 40]
+  end
+
+  it "knows when there is a winner" do
+    TennisScorer.winner([50, 40]).should == :p1
+    TennisScorer.winner([40, 50]).should == :p2
+  end
+
+  it "knows when there is no winner" do
+    TennisScorer.winner([0, 0]).should == nil
+    TennisScorer.winner([40, 0]).should == nil
+    TennisScorer.winner([40, 45]).should == nil
+    TennisScorer.winner([30, 30]).should == nil
   end
 
   def balls_for player, how_many

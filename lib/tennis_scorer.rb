@@ -1,3 +1,4 @@
+
 class TennisScorer
 
   def initialize
@@ -7,11 +8,10 @@ class TennisScorer
   def score
     @score.values
   end
-  
-  def winner
-    winner ||= :p1 if (score[0] == 50)
-    winner ||= :p2 if (score[1] == 50)
-    winner
+
+  def self.winner points
+    return :p1 if points[0] == 50
+    return :p2 if points[1] == 50
   end
 
   def ball_for player
