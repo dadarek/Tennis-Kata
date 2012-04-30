@@ -1,6 +1,8 @@
 
 class TennisScorer
 
+  @@WINNING_SCORE = 50
+
   def initialize
     @score = { p1: 0, p2: 0 }
   end
@@ -15,8 +17,8 @@ class TennisScorer
   end
 
   def winner
-    return :p1 if @score[:p1] == 50
-    return :p2 if @score[:p2] == 50
+    return :p1 if @score[:p1] == @@WINNING_SCORE
+    return :p2 if @score[:p2] == @@WINNING_SCORE
   end
 
   private
