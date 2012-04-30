@@ -52,18 +52,6 @@ describe TennisScorer do
     @scorer.score.should == [40, 40]
   end
 
-  it "knows when there is a winner" do
-    TennisScorer.winner([50, 40]).should == :p1
-    TennisScorer.winner([40, 50]).should == :p2
-  end
-
-  it "knows when there is no winner" do
-    TennisScorer.winner([0, 0]).should == nil
-    TennisScorer.winner([40, 0]).should == nil
-    TennisScorer.winner([40, 45]).should == nil
-    TennisScorer.winner([30, 30]).should == nil
-  end
-
   def balls_for player, how_many
     how_many.times{ @scorer.ball_for player }
   end

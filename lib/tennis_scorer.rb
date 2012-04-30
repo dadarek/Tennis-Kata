@@ -9,11 +9,6 @@ class TennisScorer
     @score.values
   end
 
-  def self.winner points
-    return :p1 if points[0] == 50
-    return :p2 if points[1] == 50
-  end
-
   def ball_for player
     @score[player] += next_point_value player
     set_deuce if lost_advantage? 
