@@ -10,22 +10,22 @@ describe TennisScorer do
     @scorer.score.should == [0, 0]
   end
 
-  it "treats first ball as 15" do
+  it "counts first ball as 15" do
     balls_for :p1, 1
     @scorer.score.should == [15, 0]
   end
 
-  it "treats second ball as 30" do
+  it "counts second ball as 30" do
     balls_for :p1, 2
     @scorer.score.should == [30, 0]
   end
 
-  it "treats third ball as 40" do
+  it "counts third ball as 40" do
     balls_for :p1, 3
     @scorer.score.should == [40, 0]
   end
 
-  it "treats fourth ball as 50" do
+  it "counts fourth ball as 50" do
     balls_for :p1, 4
     @scorer.score.should == [50, 0]
   end
@@ -35,45 +35,46 @@ describe TennisScorer do
     @scorer.score.should == [0, 50]
   end
 
-  it "treats advantage ball as 45" do
+  it "counts advantage ball as 45" do
     create_advantage :p1
     @scorer.score.should == [45, 40]
   end
 
-  it "treats game-point as 50" do
+  it "counts game point as 50" do
     create_advantage :p1
     balls_for :p1, 1
     @scorer.score.should == [50, 40]
   end
 
-  it "resets to deuce on lost advantage" do
+  it "resets score to 40-40 after lost advantage" do
     create_advantage :p1
     balls_for :p2, 1
     @scorer.score.should == [40, 40]
   end
 
-  it "knows where there is a winner" do
+  it "knows when you win" do
     balls_for :p1, 4
     @scorer.winner.should == :p1
   end
 
-  it "knows when p2 is the winner" do
+  it "knows when the other player wins" do
     balls_for :p2, 4
     @scorer.winner.should == :p2
   end
 
-  it "knows when there is no winner" do
+  it "knows when nobody won" do
     @scorer.winner.should == nil
   end
 
-  def balls_for player, how_many
-    how_many.times{ @scorer.ball_for player }
-  end
 
   def create_advantage player
     balls_for :p1, 3
     balls_for :p2, 3
     balls_for player, 1
+  end
+    
+  def balls_for player, how_many
+    how_many.times{ @scorer.ball_for player }
   end
 
 end
