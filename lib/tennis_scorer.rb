@@ -30,9 +30,17 @@ class TennisScorer
     @score = { p1: 40, p2: 40}
   end
 
+  def advantage?
+    score.include? 45
+  end
+
+  def deuce?
+    score == [40, 40]
+  end
+
   def next_point_value player
-    return 5 if score.include? 45
-    return 5 if score == [40, 40]
+    return 5 if advantage?
+    return 5 if deuce?
     return 10 if @score[player] >= 30
     return 15
   end
