@@ -40,24 +40,24 @@ describe TennisScorer do
     @scorer.score.should == [45, 40]
   end
 
-  it "counts game point as 50" do
+  it "counts game ball as 50" do
     create_advantage :p1
     balls_for :p1, 1
     @scorer.score.should == [50, 40]
   end
 
-  it "resets score to 40-40 after lost advantage" do
+  it "resets to deuce on lost advantage" do
     create_advantage :p1
     balls_for :p2, 1
     @scorer.score.should == [40, 40]
   end
 
-  it "knows when you win" do
+  it "knows when p1 wins" do
     balls_for :p1, 4
     @scorer.winner.should == :p1
   end
 
-  it "knows when the other player wins" do
+  it "knows when p2 wins" do
     balls_for :p2, 4
     @scorer.winner.should == :p2
   end
@@ -66,13 +66,12 @@ describe TennisScorer do
     @scorer.winner.should == nil
   end
 
-
   def create_advantage player
     balls_for :p1, 3
     balls_for :p2, 3
     balls_for player, 1
   end
-    
+
   def balls_for player, how_many
     how_many.times{ @scorer.ball_for player }
   end
