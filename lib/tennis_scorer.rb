@@ -11,7 +11,7 @@ class TennisScorer
 
   def ball_for player
     @score[player] += next_point_value player
-    @score = {p1: 40, p2: 40} if score == [45, 45]
+    set_deuce if lost_advantage?
   end
 
   def winner
@@ -20,6 +20,14 @@ class TennisScorer
   end
 
   private
+
+  def lost_advantage?
+    score == [45, 45] 
+  end
+
+  def set_deuce
+    @score = {p1: 40, p2: 40}
+  end
 
   def next_point_value player
     return 5 if advantage? 
