@@ -1,7 +1,7 @@
 class TennisScorer
 
   def initialize
-    @score = { p1: 0, p2: 0} 
+    @score = {p1: 0, p2: 0}
   end
 
   def score
@@ -23,11 +23,11 @@ class TennisScorer
   private
 
   def set_deuce
-    @score = { p1: 40, p2: 40 }
+    @score = {p1: 40, p2: 40}
   end
 
   def lost_advantage?
-    score == [45, 45] 
+    score == [45, 45]
   end
 
   def next_point_value player
@@ -37,12 +37,12 @@ class TennisScorer
     return 15
   end
 
-  def deuce?
-    score == [40, 40]
-  end
-
   def advantage?
     score.include? 45
+  end
+
+  def deuce?
+    score == [40, 40]
   end
 
 end

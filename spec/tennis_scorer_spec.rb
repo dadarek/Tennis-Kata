@@ -17,7 +17,7 @@ describe TennisScorer do
 
   it 'counts second ball as 30' do
     balls_for :p1, 2
-    @scorer.score.should == [30 ,0]
+    @scorer.score.should == [30, 0]
   end
 
   it 'counts third ball as 40' do
@@ -62,7 +62,7 @@ describe TennisScorer do
     @scorer.winner.should == :p2
   end
 
-  it 'knows when nobody won' do
+  it 'konws when nobody won' do
     @scorer.winner.should == nil
   end
 
@@ -73,7 +73,8 @@ describe TennisScorer do
   end
 
   def balls_for player, how_many
-    how_many.times{ @scorer.ball_for player}
+    how_many.times{ @scorer.ball_for player }
   end
-    
+
+
 end
