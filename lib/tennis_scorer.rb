@@ -9,8 +9,8 @@ class TennisScorer
   end
 
   def ball_for player
-    @score[player] += next_point_value player
-    if lost_advantage?
+    @score[player] += next_point_value(player)
+    if lost_advantage? 
       set_deuce
     end
   end
@@ -37,12 +37,12 @@ class TennisScorer
     return 15
   end
 
-  def advantage?
-    score.include? 45
-  end
-
   def deuce?
     score == [40, 40]
+  end
+
+  def advantage?
+    score.include? 45
   end
 
 end

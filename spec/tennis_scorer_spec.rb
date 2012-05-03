@@ -1,7 +1,7 @@
 require 'tennis_scorer'
 
 describe TennisScorer do
-
+  
   before :each do
     @scorer = TennisScorer.new
   end
@@ -17,7 +17,7 @@ describe TennisScorer do
 
   it 'counts second ball as 30' do
     balls_for :p1, 2
-    @scorer.score.should == [30, 0]
+    @scorer.score.should == [30 ,0]
   end
 
   it 'counts third ball as 40' do
@@ -35,13 +35,13 @@ describe TennisScorer do
     @scorer.score.should == [0, 50]
   end
 
-  it 'counts advantage ball as 45' do
+  it 'counts advantage as 45' do
     create_advantage :p1
     @scorer.score.should == [45, 40]
   end
 
   it 'counts game ball as 50' do
-    create_advantage :p1
+    create_advantage :p1 
     balls_for :p1, 1
     @scorer.score.should == [50, 40]
   end
@@ -62,9 +62,10 @@ describe TennisScorer do
     @scorer.winner.should == :p2
   end
 
-  it 'konws when nobody won' do
+  it 'knows when nobody won' do
     @scorer.winner.should == nil
   end
+
 
   def create_advantage player
     balls_for :p1, 3
@@ -75,6 +76,5 @@ describe TennisScorer do
   def balls_for player, how_many
     how_many.times{ @scorer.ball_for player }
   end
-
 
 end
